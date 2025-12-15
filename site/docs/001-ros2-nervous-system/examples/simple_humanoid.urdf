@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot name="simple_humanoid">
+
+  <!-- Base Link: The Torso -->
+  <link name="torso">
+    <visual>
+      <geometry>
+        <box size="0.4 0.6 1.0" />
+      </geometry>
+      <origin xyz="0 0 0.5" rpy="0 0 0" />
+      <material name="blue">
+        <color rgba="0.0 0.0 0.8 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.4 0.6 1.0" />
+      </geometry>
+      <origin xyz="0 0 0.5" rpy="0 0 0" />
+    </collision>
+    <inertial>
+      <mass value="10" />
+      <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
+    </inertial>
+  </link>
+
+  <!-- Right Shoulder Joint -->
+  <joint name="right_shoulder_joint" type="revolute">
+    <parent link="torso" />
+    <child link="right_upper_arm" />
+    <origin xyz="0 -0.4 0.8" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.57" upper="1.57" effort="100" velocity="1" />
+  </joint>
+
+  <!-- Right Upper Arm Link -->
+  <link name="right_upper_arm">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.5" />
+      </geometry>
+      <origin xyz="0 0 -0.25" rpy="0 0 0" />
+      <material name="white">
+        <color rgba="1.0 1.0 1.0 1.0" />
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.5" />
+      </geometry>
+      <origin xyz="0 0 -0.25" rpy="0 0 0" />
+    </collision>
+    <inertial>
+      <mass value="2" />
+      <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0" />
+    </inertial>
+  </link>
+
+</robot>
